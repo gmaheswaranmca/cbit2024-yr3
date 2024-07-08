@@ -163,9 +163,67 @@ def bsort(ar):
         N -= 1
     #conduct the pass for the list excluded last element 
 
+    Time Complexity: O(N^2) for average and worst case 
+        O(N) for best case -> the list already sorted 
+    Space Complexity: O(1)    
+
+    attributes: 
+        comparison, swap, in-place 
 
     2. selection sort 
+ar = [5 3 4 2 1], ssort
+    selecting every element, find the sorted element (min element), swap - pass 
+    5// 3 4 2 1     min element 1
+    1   3 4 2 5     first element is sorted 
+
+
+    3// 4 2 5       min element 2 
+    2 4 3 5         first element got its position after swap ie sorted 
+
+    def ssort(ar):
+        N = len(ar)
+        for I in range(0,N-1):  #select every el 
+            min_index = I 
+            #one pass 
+            for J in range(I+1,N): #compare the slected element with next elements 
+                if ar[J] < ar[min_index]:
+                    min_index = J 
+            if min_index != I:  
+                ar[I],ar[min_index] = ar[min_index],ar[I] #selected element is sorted 
+        
+
+    Time Complexity: O(N^2) for average,worst and best cases
+    Space Complexity: O(1)     
+
+    attributes: 
+        comparison, swap, in-place    
+
+
     3. insertion sort 
+ar = [5 3 4 2 1], isort
+    how we insert the element in the array. the similar way we do the insertion sort. 
+
+5 3 4 2 1   | two list we have always, 1 - sorted, another - unsorted 
+
+5 3// 4 2 1 | find the position of the second el 3 in the sorted list 
+3 5 4// 2 1 | index of el 4 in the sorted list is 1 
+3 4 5 2// 1   | index of 2 is 0 in sorted list 
+2 3 4 5 1//    | index of 1 is 0 in sorted list 
+1 2 3 4 5       now, the list is sorted 
+
+    insertion in the array? by right shift 
+def isort(ar): 
+    N = len(ar) 
+    for I in range(1,N-1): 
+        target = ar[I]
+        J = I - 1 
+        while J >= 0 and target < ar[J]:
+            J = J - 1
+            ar[J+1] = ar[J] #shift right, run parallel wrt finding the pos of el 
+        ar[J] = target 
+
+        
+
 
     4. quick sort 
     5. merge sort 
