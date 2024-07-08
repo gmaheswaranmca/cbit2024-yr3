@@ -1,0 +1,94 @@
+- Python, DSA (Basics), Advanced DSA 
+- Algorithms 
+- Advanced Data Structures 
+    - Trees / Graph 
+- Application Development 
+    Web Technologies 
+    SQL 
+- Problem Solvings on platforms 
+--- --- --- 
+Algorithms 
+    Searching
+        Linear Search   O(N)
+        Binary Search   O(log N)
+        Ternary Search  
+    Sortings
+        Bubble 
+        Selection 
+        Insertion 
+        Quick 
+        Merge 
+        Heap (After Tree)
+--- --- ---
+Search - Traversal in the list, find search element
+
+Linear Search 
+    list or array or sequence     
+
+    sequencial search 
+
+Q: get list of N elements (numbers), search a number in the list using linear search. 
+   write a function to conduct search.
+    list = [5 3 1 2 4]
+    search 2 
+
+Binary Search 
+    for sorted list (ascending order for number, assume)
+        - to conduct fastest search we use the binary search 
+
+    1. finding the middle element and check with the target 
+    2. before the middle element, the sub list lesser 
+    3. after the middle element, the sub list higher 
+
+    search range is reduced half every time if we cannot find the middle as the target.
+ 0                7  
+[1 3 5 7// 9 10 12 15]   target = 12 
+
+ 4        7
+[9 10// 12 15]  
+ 6   7 
+[12// 15]            at index 6 if found 
+                     at index -1 if not found 
+    psedo code: ar, target are the input 
+left, right = 0, N-1 
+
+
+while left < right:
+    mid = (left + right) // 2 
+    if target == ar[mid]: 
+        return mid 
+    elif target < ar[mid]:
+        right = mid - 1 
+    else:
+        left = mid + 1
+
+return -1
+
+
+
+
+Q: 
+https://leetcode.com/problems/binary-search/
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        N = len(nums)
+        left, right = 0, N-1
+
+        while left <= right:
+            mid = (left + right) // 2 
+            if target == nums[mid]: 
+                return mid 
+            elif target < nums[mid]:
+                right = mid - 1 
+            else:
+                left = mid + 1
+
+        return -1 
+        
+
+Ternary Search 
+    
+
+
+
