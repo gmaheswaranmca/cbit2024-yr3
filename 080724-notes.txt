@@ -88,7 +88,85 @@ class Solution:
         
 
 Ternary Search 
-    
+    two mid elements by dividing the list into 
+    three sub list 
+
+    by find two mid elements 
+
+    mid1  
+    mid2 - start and end index middle list 
+left 0                      9 right 
+    [1 3 5 7 9 11 13 15 17 19]
+           m1     m2  
+ternary_serach(ar,target,left,right): #   
+    if left <= right:
+        mid1 = left + ((right - left ) // 3)    # 0 + 3 = 3
+        mid2 = right - ((right - left ) // 3)   # 9 - 3 = 6
+
+        if target == ar[mid1]:
+            return mid1 
+        elif target == ar[mid2]:
+            return mid2 
+        else:   # reduce the search range | left list | mid list | right list 
+            if target < ar[mid1]:
+                return ternary_serach(ar,target,left,mid1-1)
+            elif target > ar[mid2]:
+                return ternary_serach(ar,target,mid2+1,right)
+            else:
+                return ternary_serach(ar,target,mid1+1,mid2-1)
+    return -1 #not found element 
 
 
+
+Searching algorithms: 
+    1. linear : O(N)
+        for unsorted list 
+    2. binary: O(log N )
+        for sorted list 
+    3. ternary: O(log (base3) N)
+        for sorted list 
+------------------------
+
+Sorting algorithms: 
+    1. bubble sort: 
+        A. list, adjacent elements, swap if element > next element, continue till one pass 
+            after the first pass the last element is sorted 
+
+            next time the list is one element less ie the last element less 
+        B. Repeat Step A till you dont have any swap 
+            or no further list 
+
+        Rule for optimization of the bubble sort: 
+            1. after every pass the last element is sorted.
+               Continue the next pass with last element excluded 
+            2. If there is no swap within the pass, stop procedure/process 
+                meaning: as all the elements are sorted, 
+                so we didnot have the swap within the pass 
+--- --- --- --- --- --- ---
+    ar = [5 3 4 2 1], bsort 
+def bsort(ar):
+    N = len(ar) 
+
+    while True:
+        # pass 
+        isSwapped = False 
+        for I in range(0,N-2):
+            #N-1 is index of last element, N-2 index of one ele bef last ele 
+            if ar[I] > ar[I+1]: #ar[I+1] < ar[I]
+                #swap 
+                ar[I], ar[I+1] = ar[I+1], ar[I] 
+                isSwapped = True 
+
+        if not isSwapped:
+            break 
+            #stop the procedure to proceed further for bsort 
+        N -= 1
+    #conduct the pass for the list excluded last element 
+
+
+    2. selection sort 
+    3. insertion sort 
+
+    4. quick sort 
+    5. merge sort 
 
