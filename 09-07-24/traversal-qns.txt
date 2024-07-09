@@ -66,3 +66,65 @@ class Solution:
             
 
 Find depth value which the sub list index where we append the queue popped value.
+    def findDepth(root):
+        #base cond 
+        if not root: 
+            return 0
+        #logic for max depth 
+        ldepth = findDepth(root.left)
+        rdepth = findDepth(root.right)
+
+        depth = max(ldepth,rdepth) + 1
+
+        return depth
+
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if root is None:
+            return []
+        res = [] 
+        root_depth = findDepth(root)
+        for I in range(root_depth): #[[],[],[]] -> res 
+            res.append([])
+
+        queue = deque([root])
+        
+        while queue:
+            node = queue.popleft()
+            #visit code 
+            node_depth = findDepth(node)
+            print({'val':node.val,'depth':node_depth}, end=' ')
+            res[node_depth-1].append(node.val)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        # res = [[nodes of level 2],[nodes of level 1],[nodes of level 0]]
+        return res[::-1]
+
+The depth is not applicable to find the position of the node in the level index.
+code is with bug. To solve, 
+    we have to use the findHeight() 
+        which will give us the level index 
+            at which we may add the node val.
+
+----- Satya fixed the bug. ----- 
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if root is None:
+            return []
+        queue = deque([root])
+        res = []
+        while queue:
+            level_size = len(queue)
+            level_nodes = []
+            for _ in range(level_size):
+                node = queue.popleft()
+                level_nodes.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            res.append(level_nodes)
+        return res
+
