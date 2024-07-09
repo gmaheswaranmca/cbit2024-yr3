@@ -1,0 +1,20 @@
+Q: **Symmetric Tree (LeetCode 101)**
+https://leetcode.com/problems/symmetric-tree/description/
+
+
+    Check 
+    if a given binary tree is symmetric around its center. 
+    This means 
+        the left subtree should be 
+        a mirror image of the right subtree.
+
+### Problem Explanation:
+A tree is symmetric if:
+- The root node has two subtrees that are mirrors of each other.
+- Each subtree's left child mirrors the other subtree's right child.
+
+### Solution Approach:
+To determine if the tree is symmetric, 
+we need to compare the left and right subtrees recursively. 
+We'll use a helper function that checks 
+if two trees are mirrors of each other.
