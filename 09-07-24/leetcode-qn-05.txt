@@ -25,3 +25,40 @@ requires finding the maximum depth of a given binary tree.
     For each node, we calculate the maximum depth of its left subtree and 
     right subtree and return the greater of the two, plus one 
     (to account for the current node).
+
+    max(max-depth-of-left-tree, max-depth-of-right-tree) + 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        #base cond 
+        if not root: 
+            return 0
+        #logic for max depth 
+        ldepth = self.maxDepth(root.left)
+        rdepth = self.maxDepth(root.right)
+
+        depth = max(ldepth,rdepth) + 1
+
+        return depth
