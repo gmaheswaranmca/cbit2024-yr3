@@ -24,3 +24,40 @@ For each pair of nodes from both trees, we need to check:
 2. If only one of the nodes is `None`, the trees are not the same.
 3. If the values of the nodes are different, the trees are not the same.
 4. Recursively check the left and right subtrees of both nodes.
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        #base conditions 
+        if (not p) and (not q):
+            return True 
+        if (not p) or (not q):
+            return False 
+        #logic for not same     
+        if p.val != q.val:
+            return False 
+        #recursively we find the trees are same or not 
+        return self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right)
+
+--------------- Satya solution ------------
+def preorder(root,res):
+    if not root:
+        res.append(root)
+        return res 
+    
+    res.append(root.val)
+    preorder(root.left, res)
+    preorder(root.right, res)
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        p_nodes = []
+        q_nodes = []
+        preorder(p,p_nodes)
+        preorder(q,q_nodes)
+        print(p_nodes, q_nodes)
+        return p_nodes == q_nodes
