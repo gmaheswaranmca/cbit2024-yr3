@@ -4,7 +4,7 @@ Today Plan:
             - learning the binary traversal
 
     BST - Binary Search Tree - discussed, tried in the computer
-    Problems on BST ---
+    Problems on BST --- three leetcode Qns
     AVL 
         - Implement the AVL 
     Some more Problems on Binary Tree 
