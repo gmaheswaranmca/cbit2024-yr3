@@ -1,7 +1,8 @@
 Today Plan:
     Yesterday assignment - discussed the solution, 
-    two more problems.
-        
+    two more problems.              totally 9 probs solved. 
+            - learning the binary traversal
+
     BST - Binary Search Tree 
     Problems on BST 
     AVL 
