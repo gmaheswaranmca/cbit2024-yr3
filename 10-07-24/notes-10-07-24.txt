@@ -1,5 +1,7 @@
 Today Plan:
-    Yesterday assignment, two more problems.
+    Yesterday assignment - discussed the solution, 
+    two more problems.
+        
     BST - Binary Search Tree 
     Problems on BST 
     AVL 

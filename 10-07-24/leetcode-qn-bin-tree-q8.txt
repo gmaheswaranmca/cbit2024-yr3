@@ -1,0 +1,30 @@
+Q: **Invert Binary Tree (LeetCode 226)**
+https://leetcode.com/problems/invert-binary-tree/
+
+**Problem:** Invert a binary tree.
+- **Solution:** 
+    Swap the left and right children of each node in the tree.
+
+
+### Problem Explanation:
+Given the root of a binary tree, invert the tree, and return its root.
+
+### Solution Approach:
+We can solve this problem using a recursive approach. 
+For each node, 
+    we swap its left and right children, and | visit node 
+    then recursively invert                 
+        the left and right subtrees.         | travel left 
+                                             | travel right 
+
+We try to use preorder traversal for this problem.
+psedo code: 
+    if not root:
+        return None
+    1. visit node: swap the children 
+    2. travel left 
+    3. travel right 
+    return root 
+
+    
+                                        
