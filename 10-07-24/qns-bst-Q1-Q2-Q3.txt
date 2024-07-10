@@ -63,7 +63,7 @@ class Solution:
         else: #val < root.val 
             root.left = self.insertIntoBST(root.left, val)
         return root
-        
+
 Q: 
 Minimum Distance Between BST Nodes
 https://leetcode.com/problems/minimum-distance-between-bst-nodes/
@@ -76,3 +76,20 @@ https://leetcode.com/problems/minimum-distance-between-bst-nodes/
         then calculates the minimum difference 
         between consecutive values.
     
+def inorder(root, ar = []):
+    if not root:
+        return ar 
+    #logic 
+    inorder(root.left, ar)
+    ar.append(root.val)
+    inorder(root.right, ar)
+class Solution:
+    def minDiffInBST(self, root: Optional[TreeNode]) -> int:
+        ar = []
+        inorder(root, ar) #ar will have sorted data 
+        diff = []
+        N = len(ar)
+        for I in range(N-1): #one element bef last
+            diff.append(abs(ar[I]-ar[I+1]))
+        minimum = min(diff)
+        return minimum
