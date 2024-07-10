@@ -1,0 +1,8 @@
+Today Plan:
+    Yesterday assignment, two more problems.
+    BST - Binary Search Tree 
+    Problems on BST 
+    AVL 
+        - Implement the AVL 
+    Some more Problems on Binary Tree 
+-------------------------

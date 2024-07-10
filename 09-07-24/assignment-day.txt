@@ -18,3 +18,20 @@ To determine if the tree is symmetric,
 we need to compare the left and right subtrees recursively. 
 We'll use a helper function that checks 
 if two trees are mirrors of each other.
+def is_two_symmetric(p, q):
+    #base conditions 
+    if (not p) and (not q):
+        return True 
+    if (not p) or (not q):
+        return False 
+    #logic for not same     
+    if p.val != q.val:
+        return False 
+    #recursively we find the trees are symmetric or not 
+    return is_two_symmetric(p.left,q.right) and is_two_symmetric(p.right,q.left)
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True 
+        return is_two_symmetric(root.left, root.right)
+
