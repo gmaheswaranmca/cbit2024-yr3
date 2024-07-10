@@ -21,3 +21,15 @@ For each node, subtract the node's value from the target sum,
 and recursively check its left and right subtrees with the updated sum. 
 If we reach a leaf node and the remaining sum equals the leaf's value, 
 we have found a valid path.
+
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        #no path 
+        if not root:
+            return False
+        # if leaf node
+        if (not root.left) and (not root.right):
+            return targetSum == root.val
+        # if not leaf 
+        targetSum -= root.val 
+        return self.hasPathSum(root.left, targetSum) or self.hasPathSum(root.right, targetSum) 
