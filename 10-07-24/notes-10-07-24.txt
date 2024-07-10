@@ -3,8 +3,8 @@ Today Plan:
     two more problems.              totally 9 probs solved. 
             - learning the binary traversal
 
-    BST - Binary Search Tree 
-    Problems on BST 
+    BST - Binary Search Tree - discussed, tried in the computer
+    Problems on BST ---
     AVL 
         - Implement the AVL 
     Some more Problems on Binary Tree 

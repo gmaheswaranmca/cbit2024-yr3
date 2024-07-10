@@ -22,6 +22,19 @@ https://leetcode.com/problems/search-in-a-binary-search-tree/
         in the right subtree 
             if it is greater.
 
+class Solution:
+    def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+        #base cond 
+        if root is None:
+            return None 
+        #logic 
+        if root.val == val:
+            return root
+        elif val > root.val:
+            return self.searchBST(root.right, val)
+        else: #key<root.value 
+            return self.searchBST(root.left, val)                  
+
 Q: 
 Insert into a Binary Search Tree
 https://leetcode.com/problems/insert-into-a-binary-search-tree/
@@ -38,6 +51,19 @@ https://leetcode.com/problems/insert-into-a-binary-search-tree/
         into the right subtree 
             if it is greater.
 
+class Solution:
+    def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+        #base cond 
+        if root is None:
+            return TreeNode(val)
+        
+        #logic 
+        if  val > root.val:
+            root.right = self.insertIntoBST(root.right, val)
+        else: #val < root.val 
+            root.left = self.insertIntoBST(root.left, val)
+        return root
+        
 Q: 
 Minimum Distance Between BST Nodes
 https://leetcode.com/problems/minimum-distance-between-bst-nodes/
