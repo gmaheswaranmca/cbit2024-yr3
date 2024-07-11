@@ -13,12 +13,12 @@ class RedBlackTree:
         self.root = self.NIL
 
     def insert(self, key):
-        new_node = Node(key)
+        new_node = Node(key) #1
         new_node.left = self.NIL
         new_node.right = self.NIL
         new_node.parent = None
 
-        parent = None
+        parent = None #2
         current = self.root
 
         while current != self.NIL:
@@ -30,14 +30,14 @@ class RedBlackTree:
 
         new_node.parent = parent
 
-        if parent is None:
+        if parent is None: #3
             self.root = new_node
         elif new_node.data < parent.data:
             parent.left = new_node
         else:
             parent.right = new_node
 
-        if new_node.parent is None:
+        if new_node.parent is None: #4
             new_node.color = "BLACK"
             return
 

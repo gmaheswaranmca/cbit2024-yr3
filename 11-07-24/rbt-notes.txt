@@ -1,3 +1,33 @@
+Red Black Tree = Self Balanced BST 
+
+--- Properties: ---
+A red-black tree satisfies the following properties:
+1. Red/Black Property: 
+    Every node is colored, either red or black.
+2. Root Property: 
+    The root is black.
+3. Leaf Property: 
+    Every leaf (NIL) is black.
+4. Red Property: 
+    If a red node has children, 
+    then the children are always black.
+    "red children are black"
+5. Black-depth Property: 
+    For each node, 
+        number of black nodes 
+            of any path 
+                from the node to leaf is same.
+
+ --- Node attributes ---
+ class Node:
+    def __init__(self, data):
+        self.data = data
+        self.color = "RED"  # New nodes are always red
+        self.left = None
+        self.right = None
+        self.parent = None
+
+
 --- Balance Maintainance ---
 rotation:
 
@@ -69,9 +99,11 @@ newly inserted node is always RED.
 If it violates RED-BLACK tree props, do 1. recolor 2. rotation 
 
 Algo:
+BST 
 1. **Create a New Node**:
 2. **Find the Correct Position**:
 3. **Insert the New Node**:
+BST + 
 4. **Handle Special Cases**:
 - If the new node has no parent 
     (it is the root), 
@@ -81,6 +113,7 @@ Algo:
     (meaning the new node's parent is 
     the root), the function returns 
     because the tree is still valid.
+BST ++ -> RBT
 5. **Fix Violations**:
 The `fix_insert` function is called 
 to ensure the Red-Black Tree properties are maintained 
