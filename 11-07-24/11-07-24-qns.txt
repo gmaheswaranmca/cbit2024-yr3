@@ -126,9 +126,42 @@ class Solution:
 
 
 
-
+Assignment:
 Q **Lowest Common Ancestor of a Binary Tree** - [LeetCode 236]
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+
+According to the definition of LCA on Wikipedia: 
+   “The lowest common ancestor is defined between two nodes p and q 
+   as the lowest node in T that has both p and q as descendants 
+   (where we allow a node to be a descendant of itself).”
+
+Example 1:
+
+
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+Output: 3
+Explanation: The LCA of nodes 5 and 1 is 3.
+Example 2:
+
+
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+Output: 5
+Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.
+Example 3:
+
+Input: root = [1,2], p = 1, q = 2
+Output: 1
+ 
+
+Constraints:
+
+The number of nodes in the tree is in the range [2, 105].
+-109 <= Node.val <= 109
+All Node.val are unique.
+p != q
+p and q will exist in the tree.
+
 
 ### Approach to Solve
 1. **Recursive DFS Approach**:
@@ -152,18 +185,114 @@ https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
    - If only one of `left` or `right` is `None`, return the non-`None` value (potential LCA found in one subtree).
    - If both `left` and `right` are `None`, return `None`.
 
-
+Lab Assignment:
 Q
 **Kth Smallest Element in a BST** - [LeetCode 230]
 https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+Given the root of a binary search tree, and an integer k, return the kth smallest value (1-indexed) of all the values of the nodes in the tree.
+
+
+
+Example 1:
+
+
+Input: root = [3,1,4,null,2], k = 1
+Output: 1
+Example 2:
+
+
+Input: root = [5,3,6,2,4,null,null,1], k = 3
+Output: 3
+ 
+
+Constraints:
+
+The number of nodes in the tree is n.
+1 <= k <= n <= 104
+0 <= Node.val <= 104
 
 Approach:
     inorder ie recursion 
+-----Solution 1
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 
+def inorder(root,ar=[]):
+    if not root:
+        return
+    inorder(root.left,ar)
+    ar.append(root.val)
+    inorder(root.right,ar) 
+    
+
+class Solution:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        ar = []
+        inorder(root,ar) #ar is the sorted elements in the bst 
+        #k is 1 based index 
+        return ar[k-1]
+
+------------------Solution 2 [optimized version Solution 1] !!!!Mistakes are there
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+k_th_small = float('-inf')
+index = 0
+def inorder(root,k):
+    global k_th_small
+    global index
+    if not root:
+        return
+    inorder(root.left,k)
+    index += 1
+    if index == k:
+        k_th_small = root.val 
+        return
+    inorder(root.right,k) 
+    
+
+class Solution:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        inorder(root,k)  
+        return k_th_small
+
+
+
+Lab Assignment:
 Q
 **Range Sum of BST** - [LeetCode 938]
 https://leetcode.com/problems/range-sum-of-bst/
+Given the root node of a binary search tree and two integers low and high, return the sum of values of all nodes with a value in the inclusive range [low, high].
 
+ 
+
+Example 1:
+
+
+Input: root = [10,5,15,3,7,null,18], low = 7, high = 15
+Output: 32
+Explanation: Nodes 7, 10, and 15 are in the range [7, 15]. 7 + 10 + 15 = 32.
+Example 2:
+
+
+Input: root = [10,5,15,3,7,13,18,1,null,6], low = 6, high = 10
+Output: 23
+Explanation: Nodes 6, 7, and 10 are in the range [6, 10]. 6 + 7 + 10 = 23.
+ 
+
+Constraints:
+
+The number of nodes in the tree is in the range [1, 2 * 104].
+1 <= Node.val <= 105
+1 <= low <= high <= 105
+All Node.val are unique.
 **Recursive DFS Approach**:
    - Perform a Depth-First Search (DFS) starting from the root of the tree.
    - Use the BST property to decide whether to explore left or right subtrees or to add the current node's value to the sum.
