@@ -1,0 +1,49 @@
+quick sort:
+    fix any element as pivot element, ==> ***last element*** | first element | median element | random element 
+    then find the place for the pivot element 
+        in a way that 
+            before pivot we have lesser values 
+            after pivot we have greater values 
+    for pivot:
+        [lesser values] + [pivot] + [greater values]
+    after found the place for the pivot,
+        pivot is sorted.
+    
+    now we two half list excluded pivot 
+        left side of pivot, "left list" 
+        right side of pivot, "right list"
+    conduct the same pivot placement for left and right list 
+    which leads to the all the elements are sorted in the given list 
+------------------------------------------------------------------------------
+    # fix pivot element 
+    # find place for pivot element 
+    # there is partition in the pivot element place 
+    # return partition index 
+    def partition(ar,left,right): 
+        pass 
+    def qsort(ar,left,right):
+        #base cond 
+        #   left < right -> two or more elements
+        #   left == right -> one element
+        #   left > right -> no element
+        if left >= right: 
+            return 
+        #logic 
+        pivot_index = partition(ar, left, right) #fix, find, sort the pivot
+        qsort(ar,left,pivot_index-1) #sort left list 
+        qsort(ar,pivot_index+1,right) #sort right list 
+------------------------------------------------------------------------------
+divide and conquer 
+    divide 
+    -> problem into tow sub problems
+        -> find the solution of first sub problem 
+        +
+        -> find the solution of second sub proble 
+    conquer     
+    ->
+        gather all the solutions  
+---
+in-place sorting
+---
+swap for pivot place/partioning 
+------------------------------------------------------------------------------       
