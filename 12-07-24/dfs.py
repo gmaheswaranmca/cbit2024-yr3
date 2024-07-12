@@ -6,9 +6,9 @@ graph = {
   'C' : ['A', 'F'],  'D' : ['B'],
   'E' : ['B','F'],   'F' : ['C','E']
 }
-
+visited = set() #visited nodes are added here 
 def dfs(graph, start):
-    visited = set() #visited nodes are added here 
+    global visited 
     stack = [start] #list is used the stack 
 
     while stack:
@@ -27,3 +27,5 @@ dfs(graph, 'A')
   print : A C F E B D
   stack: {}
 '''
+
+
