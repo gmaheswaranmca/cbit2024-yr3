@@ -36,7 +36,7 @@ We use the integers 0, 1, and 2 to represent the color red, white, and blue, res
 Use three pointers to sort the array in a single pass. 
 This approach has a time complexity of O(n).
 
-------------------- Questions on searching graph: ------------------- 
+
 ### Q [Kth Largest Element in an Array]
 (https://leetcode.com/problems/kth-largest-element-in-an-array/)
 **Problem Statement:**
@@ -50,6 +50,8 @@ which is similar to quicksort but only partially sorts the array
 to find the kth largest element. 
 This approach has an average time complexity of O(n).
 
+
+------------------- Questions on graph: ------------------- 
 Breadth-First Search (BFS) Problems:
     Number of Islands: 
         This problem involves counting the number of distinct islands in a 2D grid map. 
@@ -71,3 +73,256 @@ Depth-First Search (DFS) Problems:
         Determine if a word exists in a 2D board, using DFS. 
         Problem Link
         https://leetcode.com/problems/word-search/
+
+
+
+162. Find Peak Element
+Medium
+Topics
+Companies
+A peak element is an element that is strictly greater than its neighbors.
+
+Given a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.
+
+You may imagine that nums[-1] = nums[n] = -∞. In other words, an element is always considered to be strictly greater than a neighbor that is outside the array.
+
+You must write an algorithm that runs in O(log n) time.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3,1]
+Output: 2
+Explanation: 3 is a peak element and your function should return the index number 2.
+Example 2:
+
+Input: nums = [1,2,1,3,5,6,4]
+Output: 5
+Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.
+ 
+
+Constraints:
+
+1 <= nums.length <= 1000
+-231 <= nums[i] <= 231 - 1
+nums[i] != nums[i + 1] for all valid i.
+
+
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        left, right = 0, len(nums) - 1
+        while left < right:
+            mid = (left + right) // 2
+            if nums[mid] > nums[mid+1]:
+                right = mid
+            else:
+                left = mid + 1
+        return left
+
+
+
+74. Search a 2D Matrix
+Medium
+Topics
+Companies
+You are given an m x n integer matrix matrix with the following two properties:
+
+Each row is sorted in non-decreasing order.
+The first integer of each row is greater than the last integer of the previous row.
+Given an integer target, return true if target is in matrix or false otherwise.
+
+You must write a solution in O(log(m * n)) time complexity.
+
+ 
+
+Example 1:
+
+
+Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3
+Output: true
+Example 2:
+
+
+Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13
+Output: false
+ 
+
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 100
+-104 <= matrix[i][j], target <= 104
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        rows, cols = len(matrix), len(matrix[0]) #3x4
+        left, right = 0, ((rows * cols) - 1) #0,11
+
+        while left <= right:
+            mid = (left + right) // 2
+            r = mid // cols 
+            c = mid % cols
+
+            if matrix[r][c] == target:
+                return True 
+            elif target < matrix[r][c] :
+                right = mid - 1
+            else:
+                left = mid + 1
+        return False 
+
+
+75. Sort Colors
+Medium
+Topics
+Companies
+Hint
+Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
+
+We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+
+You must solve this problem without using the library's sort function.
+
+ 
+
+Example 1:
+
+Input: nums = [2,0,2,1,1,0]
+Output: [0,0,1,1,2,2]
+Example 2:
+
+Input: nums = [2,0,1]
+Output: [0,1,2]
+ 
+
+Constraints:
+
+n == nums.length
+1 <= n <= 300
+nums[i] is either 0, 1, or 2.
+
+
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        N = len(nums)
+
+        red, white, blue = 0, 0, 0
+        for e in nums:
+            if e == 0:
+                red += 1
+            elif e == 1:
+                white += 1
+            else:
+                blue += 1
+        I = 0
+        for K in range(red):
+            nums[I] = 0
+            I+=1
+        for K in range(white):
+            nums[I] = 1
+            I+=1
+        for K in range(blue):
+            nums[I] = 2
+            I+=1
+
+
+Another solution: 
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        rindex, windex, bindex = 0, 0, len(nums) - 1
+
+        while windex <= bindex:
+            if nums[windex] == 0:
+                nums[rindex], nums[windex] = nums[windex], nums[rindex]
+                rindex += 1
+                windex += 1
+            elif nums[windex] == 2:
+                nums[bindex], nums[windex] = nums[windex], nums[bindex]
+                bindex -= 1
+            else:
+                windex += 1
+
+
+
+
+
+
+
+215. Kth Largest Element in an Array
+Medium
+Topics
+Companies
+Given an integer array nums and an integer k, return the kth largest element in the array.
+
+Note that it is the kth largest element in the sorted order, not the kth distinct element.
+
+Can you solve it without sorting?
+
+ 
+
+Example 1:
+
+Input: nums = [3,2,1,5,6,4], k = 2
+Output: 5
+Example 2:
+
+Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
+Output: 4
+ 
+
+Constraints:
+
+1 <= k <= nums.length <= 105
+-104 <= nums[i] <= 104
+
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        #print(heapq.nlargest(k,nums))
+        return heapq.nlargest(k,nums)[-1]                            
+
+
+
+
+
+
+
+
+
+200. Number of Islands
+Medium
+Topics
+Companies
+Given an m x n 2D binary grid grid 
+which represents a map of '1's (land) and '0's (water), 
+return the number of islands.
+
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. 
+You may assume all four edges of the grid are all surrounded by water.
+
+ 
+Example 1:
+    Input: grid = [
+    ["1","1","1","1","0"],
+    ["1","1","0","1","0"],
+    ["1","1","0","0","0"],
+    ["0","0","0","0","0"]
+    ]
+    Output: 1
+
+Example 2:
+    Input: grid = [
+    ["1","1","0","0","0"],
+    ["1","1","0","0","0"],
+    ["0","0","1","0","0"],
+    ["0","0","0","1","1"]
+    ]
+    Output: 3
+ 
+
+Constraints:
+    m == grid.length
+    n == grid[i].length
+    1 <= m, n <= 300
+    grid[i][j] is '0' or '1'.        
