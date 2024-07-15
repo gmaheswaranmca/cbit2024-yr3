@@ -1,0 +1,50 @@
+https://www.hariompipes.com/index.php    
+
+Web Site Design for manufactoring company:
+                                        my-factory
+    Home Page                           index.html 
+        initial/starting page of the web site 
+    About Us Page                       about-us.html 
+    Products | Services Page            products.html
+    Careers Page                        careers.html
+    Contact : address, email, phone     contact.html
+
+    https://cc6d26-8080.ocws.app/careers.html Maheswaran 
+    https://5qv61i-8080.ocws.app/contact.html Sharan Sai 
+    https://cmxr9g-8080.ocws.app/my-factory/home.html Satya Kunal 
+
+Web App Design:
+    Person App: 
+
+Page Design: 
+    /persons/index.html 
+    Person App 
+    Persons List | Create Person        !!! menu bar of our app 
+
+    List of Persons 
+        firs name           last name 
+    1   maheswaaran         goivndaraju   edit delete 
+    ....
+
+    /persons/create.html
+    ...header...
+    New Person 
+    First Name [        ]
+    Last Name  [        ]
+    <Create Person>
+
+    /persons/edit.html
+    ...header...
+    Edit Person 
+    First Name [        ]
+    Last Name  [        ]
+    <Update Person>    
+
+Web App Design:
+    Vendor Search App
+        vendor {id, name, location, type, ratings}
+
+        Plan the CRUD operations like listing the vendors, create vendor and edit vendor.
+        during listing the vendors have the filter/search option for name / location / type / ratings. 
+
+

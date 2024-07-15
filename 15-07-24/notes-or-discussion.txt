@@ -1,0 +1,70 @@
+Course : Full Stack Python Development == 10days to 12days
+    Web Technologies [HTML 5 / CSS 3 / Bootstrap / JavaScript]4d [Python Flask]2d to 2.5d [React] 1d
+        Web Site Development 
+        Web App Design
+
+        Web App Development using flask 
+        Web App Full Stack= Backend (REST APIs) [python flask] + Frontend [react | angular | vue]
+            Backend App = Server App = API Provider App 
+            Frontend App = Client App = API Consumer App 
+    Database [SQL, sqlite, mysql, mongo] 2 to 3d
+        SQL sqlite 
+            *MySQL *=installed in your computer | nymbus platform 
+        *NoSQL Mongo DB - CRUD operations ++ 
+
+        main project = real time app development[simulation]
+------------------------------------------------
+HTML 5 / CSS 3 / Bootstrap / Client JavaScript == 1-2 days | JavaScript 1-2 | mini projects | 4 to 5 days (max)
+    HTML 5 for marking up content of the web site pages 
+    CSS 3 for look and feel for out web site pages 
+    JavaScript for page to be dyanamic at client side 
+
+    objectives:
+        1. hackerrank, nymbus challenges wrt HTML 
+        2. Web Site Design 
+        3. Web App Design 
+
+
+HTML 5  = markup content
+    basic HTML elements for web document 
+        paragraph<P>, heading levels<H1>..<H6>, 
+        numbering <OL><LI>...</LI></OL>, bullets <UL> <LI> </UL>, 
+        definition list <DL> <DT></DT> <DD></DD> </DD>
+        table <TABLE> <TR> <TH> <TD> <THEAD> <TBODY> <TFOOT>, images <IMG SRC="">
+        hyper links 
+            <A HREF="link to the page">hyper text</A>
+        schematic elements + <DIV> <SPAN> - to structure pages of the web site 
+    designing forms 
+        <FORM ACTION METHOD>
+            <INPUT TYPE="...">      text, password, number, email, radio, checkbox, button
+            <BUTTON>...</BUTTON>
+            <SELECT><OPTION>...<OPTION>...</SELECT>
+        </FORM>
+        built in validations attributes 
+CSS 3 = beautician for web page | to make the page content look and feel 
+    font, font-weight, font-style, font-size 
+    text-align, text-decoration 
+    color, backgroud-color, background-image 
+
+    box: border, margin, padding ...
+
+    diplay: 
+
+    media query: to define styles based on the device 
+
+    responsive design : flexbox, grid layouts -> bootstrap 
+
+    selector element type, id, class  
+
+Bootstrap = CSS readymade styles library / framework
+
+JavaScript - client side validations 
+
+     
+------------------------------------------------
+Database 
+    SQL             1.5 days | 1 days challenges / problems related to the database 2.5 to 3 days 
+        sqlite 
+        mysql 
+    noSQL *mongo
+------------------------------------------------    
