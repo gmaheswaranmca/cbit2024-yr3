@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc App | Square Calculator</title>
+    <!-- 
+        <link rel="stylesheet" type="text/css" href="square-calc-styles.css"/>
+        <script type="text/javascript" src="square-calc-script.js"></script>
+    -->
+
+    <style type="text/css">
+
+body,input,button { font-family: 'Lucida Console';}
+label {display:inline-block; width: 25%;}
+form div {margin-bottom: 10px;}
+input {width: 70%}
+/* apply bg/text color of boxes and buttons and borders */
+input {background-color: wheat; border: 1px solid orange;}
+button { background-color: cornflowerblue; 
+    border:1px solid silver; 
+    border-radius:5px;}
+
+    </style>
+
+
+
+    <script type="text/javascript">
+
+function findSquare() {
+    const num_box = document.getElementById('num');
+    const result_box = document.getElementById('result');
+    const answer_tag = document.getElementById('answer');
+    const label_tag = document.getElementById('label_result');
+    const num = parseInt(num_box.value);
+    const result = num * num;
+    result_box.value = result;
+    answer_tag.innerHTML = `square of ${num} is ${result}`;
+    label_tag.innerHTML = "Square"
+}
+function findCube() {
+    const num_box = document.getElementById('num');
+    const result_box = document.getElementById('result');
+    const answer_tag = document.getElementById('answer');
+    const label_tag = document.getElementById('label_result');
+    const num = parseInt(num_box.value);
+    const result = num * num * num;
+    result_box.value = result;
+    answer_tag.innerHTML = `cube of ${num} is ${result}`;
+    label_tag.innerHTML = "Cube"
+}
+
+    </script>
+</head>
+<body>
+    <h1>Calculator App</h1>
+    <h3>Square Calculator</h3>
+    <div>
+        <form>
+            <div>
+                <label for="num">First Number</label>
+                <input type="number" id="num"
+                autofocus>
+            </div>
+            <div>
+                <label for="result" id="label_result">Sum</label>
+                <input type="number" id="result"
+                    readonly disabled>
+            </div>
+            <button type="button" 
+                onclick="findSquare();">Find Square</button>
+            <button type="button" 
+                onclick="findCube();"
+                style="background-color:aqua;">Find Cube</button>
+            <p id="answer"></p>
+        </form>
+    </div>
+</body>
+</html>

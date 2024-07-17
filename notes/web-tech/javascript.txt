@@ -1,0 +1,30 @@
+types of script:
+    1. external script : refer using script tag's src attr 
+    2. internal script: type the script within script tag 
+
+to declare global variable : use var keyword
+to declare scoped variable :
+    use let         for read/write  
+        OR 
+    use const       for reaonly 
+to define the function, we use keyword function
+    function funcName(arguments) {
+        //body of the comment 
+    }
+conditional statements 
+    like in C / C++ / Java 
+        if..else 
+        switch 
+        while 
+        do..while 
+        for 
+operators like in C / C++ / Java
+    arithmetic 
+    relational 
+    logical 
+    bitwise 
+    conditional 
+data types 
+    number | integer, float, string, object / json, array 
+    -------------------------------- ====================
+          primitive                     reference 

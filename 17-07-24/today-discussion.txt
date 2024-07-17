@@ -1,0 +1,7 @@
+bootstrap:
+
+layouts:
+    1. flex layout 
+    2. grid layout 
+
+case studies:

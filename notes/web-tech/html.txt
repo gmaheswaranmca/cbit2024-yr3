@@ -1,0 +1,28 @@
+1. Learning Resource | Reference
+    https://developer.mozilla.org/en-US/docs/Web/HTML
+2.  HTML element reference  
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+HTML
+    Document Program Structure 
+        - DOCTYPE 
+        - HTML 
+            - HEAD 
+                - TITLE 
+            - BODY 
+                - H1 .. H6 P UL LI OL 
+                - STRONG EM 
+                - TABLE TR TH TD THEAD TBODY TFOOT 
+                    - TABLE attr border, bordercolor, cellspacing, cellpadding, width, align 
+                    - TD/TH attr align, valign
+                - A with attr HREF
+                - FORM
+                    - LABEL 
+                    - INPUT TYPE="..."      text,password,check,radio,email,number,{button / reset / submit}
+                    - TEXTAREA
+                    - BUTTON 
+                    
+                    o label to refer the UI control such as text box 
+                        In UI control have id attr, then have for to refer the id of UI control 
+                        This helps the user to click the label text, to get the UI control focus 
+

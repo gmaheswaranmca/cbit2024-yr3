@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc App | Normal Calculator</title>
+    <link rel="stylesheet" type="text/css" 
+        href="styles.css"/>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+    <h1>Normal Calculator</h1>
+    <table border="0" bordercolor="silver" 
+        cellspacing="0" cellpadding="5" 
+        width="200" align="center">
+        <tr>
+            <td colspan="4"> 
+                <input type="text" value="0" 
+                    readonly id="answer_box"> 
+            </td>
+        </tr>
+        <tr>
+            <td width="25%"> <button></button> </td>
+            <td width="25%"> <button></button> </td>
+            <td width="25%" onclick="doCalc('C')"> <button>C</button> </td>
+            <td width="25%" onclick="doCalc('/')"> <button>/</button> </td>
+        </tr>
+        <tr>
+            <td> <button onclick="doCalc('7')">7</button> </td>
+            <td> <button onclick="doCalc('8')">8</button> </td>
+            <td> <button onclick="doCalc('9')">9</button> </td>
+            <td> <button onclick="doCalc('*')">*</button> </td>
+        </tr>
+        <tr>
+            <td> <button onclick="doCalc('4')">4</button> </td>
+            <td> <button onclick="doCalc('5')">5</button> </td>
+            <td> <button onclick="doCalc('6')">6</button> </td>
+            <td> <button onclick="doCalc('-')">-</button> </td>
+        </tr>
+        <tr>
+            <td> <button onclick="doCalc('1')">1</button> </td>
+            <td> <button onclick="doCalc('2')">2</button> </td>
+            <td> <button onclick="doCalc('3')">3</button> </td>
+            <td> <button onclick="doCalc('+')">+</button> </td>
+        </tr>
+        <tr>
+            <td> <button></button> </td>
+            <td> <button onclick="doCalc('0')">0</button> </td>
+            <td> <button></button> </td>
+            <td> <button onclick="doCalc('=')">=</button> </td>
+        </tr>
+    </table>
+
+</body>
+</html>

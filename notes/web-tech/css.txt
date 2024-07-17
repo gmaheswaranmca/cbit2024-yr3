@@ -1,0 +1,59 @@
+1. Learning Resource | Reference
+    https://developer.mozilla.org/en-US/docs/Web/CSS
+2.  CSS property reference  
+    https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
+    Note: scroll down little in this article to see the property reference 
+
+body, button, input { font-family: 'Courier New'; }
+button, input { color: darkgreen;  background-color:burlywood;
+        font-weight: bold; font-size: 14pt; }
+button { width: 40px; height:40px; 
+        border: 1px solid green; border-radius: 5px; }
+table { border: 1px dashed goldenrod; }
+input {width: 95%; text-align: right; background-color: white;
+       border: 1px solid green;}
+
+
+
+style properties 
+1. color, background
+    color : white              <- text color 
+    background-color : orange   <- background color 
+2. font
+    font-family : 'Verdana'        <- provide the font names for the element(s)
+    font-size : 12pt          <- to change the size of font 
+    font-weight : bold        <- to apply the bold for the element 
+    font-style : italic
+3. text 
+    text-align : center;       !!! left, right, center, justify 
+    text-decoration: underline; !!! underline, overline, none 
+4. box properties 
+    /*  space between text and border */ 
+    padding-left: 10px;
+    padding: 5px; !!! applied all left right up down 
+    padding: 5px 10px; 
+    padding: 5px 10px 15px 20px;
+    /*  space between elements */ 
+    margin:     it is similar to padding 
+    ...
+    /* to set the border */
+    border: 1px solid silver;   !!! solid, dotted, dashed 
+    border: 10px inset orange;  !!! 3d borders : inset, outset, ridge, groove 
+    border-width: 12px; 
+    border-style: dotted;
+    border-color: darkgreen;
+
+    border-left: 1px solid red; !!! -left | -right | -bottom | -top
+
+    /* border radius */
+    border-radius: 10px;
+    border-left-top-radius: 20px; !!! left-top | right-top | left-bottom | right-bottom 
+    /* */
+    width: 200px;
+    height: 100px;
+
+types of style sheets:
+    1. external style sheet - refer using link tag's href attr 
+    2. internal style sheet - type inside the style tag 
+    3. inline style sheet - type inside style attr of the tag 
+

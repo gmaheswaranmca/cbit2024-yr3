@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc App | Square Calculator</title>
+    <link rel="stylesheet" type="text/css" href="square-calc-styles.css"/>
+    <script type="text/javascript" src="square-calc-script.js"></script>
+</head>
+<body>
+    <h1>Calculator App</h1>
+    <h3>Square Calculator</h3>
+    <div>
+        <form>
+            <div>
+                <label for="num">First Number</label>
+                <input type="number" id="num"
+                autofocus>
+            </div>
+            <div>
+                <label for="result" id="label_result">Sum</label>
+                <input type="number" id="result"
+                    readonly disabled>
+            </div>
+            <button type="button" 
+                onclick="findSquare();">Find Square</button>
+            <button type="button" 
+                onclick="findCube();">Find Cube</button>
+            <p id="answer"></p>
+        </form>
+    </div>
+</body>
+</html>

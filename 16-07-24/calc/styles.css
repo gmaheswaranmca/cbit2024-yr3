@@ -1,0 +1,8 @@
+body, button, input { font-family: 'Courier New'; }
+button, input { color: darkgreen;  background-color:burlywood;
+        font-weight: bold; font-size: 14pt; }
+button { width: 40px; height:40px; 
+        border: 1px solid green; border-radius: 5px; }
+table { border: 1px dashed goldenrod; }
+input {width: 95%; text-align: right; background-color: white;
+       border: 1px solid green;}

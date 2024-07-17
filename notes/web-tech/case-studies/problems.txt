@@ -1,0 +1,37 @@
+1. mini web site for manufactoring company !!!
+2. person app for person resource !!!
+    person { first_name, last_name }
+    CRUD operations pages desinged 
+        persons/create.html
+        persons/edit.html
+        persons/index.html  --- listing/display all persons 
+3[assignment]. mini web site for manufacturing company !!!--
+    - content fixed 
+4[assignment]. vendor search app !!!--
+    with the resource vendor 
+        vendro {id, name, place, type, ratings }
+    CRUD operations pages design 
+5. calcular app !!!
+    computer calculator app we simulated using html/css/javascript 
+6. sum calculator  !!!
+    two text boxes to collect the numbers 
+    and "find sum" to produce the sum result 
+
+    here result should be collected in third box and 
+    printed as "sum of 10 and 20 is 30"
+
+    use styles to make the calculator beautiful
+7. square and cube calculator  !!!
+    one text box to collect the number 
+    and "find square" button to produce the square result 
+    and "find cube" button to produce the cube result 
+
+    here result should be collected in second box and 
+    printed as "square of 5 is 25"
+
+    use styles to make the calculator beautiful
+8. form design with validations  !!!XXXXXXXXNot Done 
+
+9. counter - app / program 
+10. todo list app 
+11. tic-toc-toe                 !!! now programming 
