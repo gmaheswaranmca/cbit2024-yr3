@@ -34,4 +34,40 @@
 
 9. counter - app / program 
 10. todo list app 
-11. tic-toc-toe                 !!! now programming 
+11. tic-toc-toe         
+
+12. "notes" app design 
+    !!! Notes app is the one may be used by trainer for his/her class notes.
+Notes App | login
+Login Page                 
+    Username [              ]
+    Password [              ]
+    <Login>
+
+Notes App | search notes | all notes | new notes                logout 
+New Notes
+    title: introduction to boostrap 
+    notes: explanation of introduction to boostrap 
+    <create>
+
+Search Notes
+    Filter 
+        title: [                ] 
+        notes: [                ]
+        <search> 
+
+Notes List 
+    All Notes | Searched Notes
+    # title      
+    1 introduction to boostrap   <view> <edit> <delete>
+    2 introduction to boostrap   <view> <edit> <delete>
+    ....
+View Notes
+    title: introduction to boostrap 
+    notes: explanation of introduction to boostrap 
+    
+Edit Notes
+    title: introduction to boostrap 
+    notes: explanation of introduction to boostrap 
+    <update>
+

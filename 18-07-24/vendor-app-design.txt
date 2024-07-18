@@ -1,0 +1,11 @@
+Use bootstrap to design the vendor search app.
+
+vendor fields: id, name, place, type, ratings 
+
+1. search vendor 
+2. list of vendros 
+3. create vendor 
+4. edit vendor 
+menus : "Vendor Search App", "search vendor", "all vendors", "new vendor"       Welcome trainer!!! <logout>
+5. login 
+menus : "Vendor Search App", "login"    

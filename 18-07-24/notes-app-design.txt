@@ -1,0 +1,51 @@
+12. "notes" app design 
+Actor: Trainer 
+Role: Trainer | Senior Trainer | Head Trainer 
+   analogy 
+      agent   | supervisor     | manager    
+App Security: Authentication(login) + Authorization(role of the user)
+                            Authorization                               access to the pages after logged in 
+    Login Page                                     <-- Authentication   log into the app 
+        login.html          all role users     
+
+    Logged In Pages 
+        index.html          role: all 
+        list.html           role: all 
+        create.html         role: Senior Trainer, Head Trainer
+        view.html           role: all 
+        edit.html           role: Head Trainer
+
+
+    !!! Notes app is the one may be used by trainer for his/her class notes.
+Notes App | login
+Login Page                                              login.html          
+    Username [              ]
+    Password [              ]
+    <Login>
+
+Notes App | search notes | all notes | new notes                logout 
+New Notes                                               create.html
+    title: introduction to boostrap 
+    notes: explanation of introduction to boostrap 
+    <create>
+
+Search Notes                                            index.html (search / logged in startup page)
+    Filter 
+        title: [                ] 
+        notes: [                ]
+        <search> 
+
+Notes List                                              list.html
+    All Notes | Searched Notes
+    # title      
+    1 introduction to boostrap   <view> <edit> <delete>
+    2 introduction to boostrap   <view> <edit> <delete>
+    ....
+View Notes                                              view.html
+    title: introduction to boostrap 
+    notes: explanation of introduction to boostrap 
+    
+Edit Notes                                              edit.html 
+    title: introduction to boostrap 
+    notes: explanation of introduction to boostrap 
+    <update>
