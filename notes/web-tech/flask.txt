@@ -123,3 +123,12 @@ Visit Flask Quickstart for more information.
 
 Happy coding! 🙂
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+what is sqlite?
+    File based RDBMS 
+        minus restrictions 
+    RDBMS : tables, primary keys, foreign keys 
+        normalized data model: references 
+    Allowed the SQL.

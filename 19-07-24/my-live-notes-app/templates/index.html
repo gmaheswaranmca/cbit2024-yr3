@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes App | Home Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-success" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Notes App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">search notes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/list">all notes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/create">new notes</a>
+          </li>
+        </ul>
+        <div class="d-flex " role="search">
+          <span>Welcome Maheswaran!!!</span><button class="btn btn-danger">logout</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <h3>Search Notes</h3>
+  <div class="container">
+    <div class="mb-3 form-group">
+      <label for="title" class="form-label">title</label>
+      <input type="text" class="form-control" 
+          id="title" placeholder="type here notes title....">
+    </div>
+    <div class="mb-3 form-group">
+        <label for="notes" class="form-label">notes text</label>
+        <textarea class="form-control" 
+            id="title" placeholder="type here notes text...."></textarea>
+      </div>
+    <button class="btn btn-success">Search</button>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
