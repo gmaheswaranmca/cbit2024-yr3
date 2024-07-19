@@ -1,0 +1,203 @@
+nimbus: "our-first-hello"    
+Once we created the nimbus flask app. 
+To run the app: 
+^^^^^^^^^^^^^^^^^^^^command prompt / terminal^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    $ flask --app app.py run --host=0.0.0.0 --port=5000 --debug
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
+
+^^^^^^^^^^^^^^^^^^^^open in browser^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    https://jvxb1j-5000.ocws.app
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
+
+Now, our first flask application is running in the termial.
+we may see the output in the browser using above such url.
+
+^^^^^^^^^^^^^^^^app.py^^^^^^^^^^^^^^^^^^^^^^^^^
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello_world():
+    return "<p>Hello, World!</p>"
+
+@app.route("/dravid")
+def dravid_handler():
+    return "<h1>I am rahul dravid</h1>"
+
+@app.route("/greet")
+def gree_all():
+    return f'''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello App | Greet</title>
+</head>
+<body>    
+    <h1>Hello App</h1>
+    <h3>Greetings...</h3>
+    <p>Greeting to all!!!</p>
+</body>
+</html>'''
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+$ flask --app app.py run --host=0.0.0.0 --port=5000 --debug
+
+https://jvxb1j-5000.ocws.app
+    hit the browser to see the different outputs 
+https://jvxb1j-5000.ocws.app/
+https://jvxb1j-5000.ocws.app/greet
+https://jvxb1j-5000.ocws.app/dravid 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+hello-friend.py
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/hello")
+def hello_friend():
+    return "<h2>hello friend</h2>"
+
+
+@app.route("/hi/<name>")
+def hi_friend(name):
+    return f"<h2>hi {name}</h2>"
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/hello
+/hi/<name>            where name is the friend name 
+    /hi/raj             <h2>hi raj</h2>
+    /hi/rahul           <h2>hi rahul</h2>
+    /hi/nithin          <h2>hi nithin</h2>
+    /hi/rakesh          <h2>hi rakesh</h2>   
+^^^^^^^^^^^^^^^^^^^^^^^^^terminal^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+$ flask --app hello-friend.py run --host=0.0.0.0 --port=5000 --debug
+^^^^^^^^^^^^^^^^^^^^^^^^browser^^^^^^^^^^^^^^^^^^^^^^^^^
+https://jvxb1j-5000.ocws.app/hello
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+what is template file in flask?
+    1. template file is the HTML file 
+    2. It is more than the HTML file 
+        HTML++
+        HTML+data binding->template 
+
+default template file folder is "/templates"
+
+how will I use the template file in my router handler?
+    "render_template" function from "flask" package
+    will help to connect to the render_template
+    and allow to send the data for data bindings in the template 
+
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^sum.py^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/sum/<first>/<second>")
+def calc_sum(first, second):
+    s = int(first) + int(second) 
+    return f"<p>The sum of {first} and {second} is <strong>{s}</strong></p>"
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+^^^^^^^^^^^^^^^^^^^^^^^sum-v2.py^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+from flask import Flask, render_template
+app = Flask(__name__)
+
+@app.route("/sum/<first>/<second>")
+def calc_sum(first, second):
+    first = int(first)
+    second = int(second)
+    s = first + second 
+    return render_template("sum.html",
+        first = first, second = second, sum = s)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^/templates/sum.html^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc App | sum calc</title>
+</head>
+<body>
+    <h1>Calc App</h1>
+    <h2>sum calc</h2>
+    <p>first number: {{ first }}</p>
+    <p>second number: {{ second }}</p>
+    <p>sum: {{ sum }}</p>
+</body>
+</html>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+^^^^^^^^^^^^^^^^^^^^square.py^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+from flask import Flask, render_template, request
+app = Flask(__name__)
+
+@app.route("/square",methods=["GET","POST"])
+def calc_square():
+    num = 0
+    square = 0
+
+    if request.method == "POST":
+        num = int(request.form['num'])
+        square = num ** 2
+
+    return render_template("square.html",
+        num = num, square = square)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^/templats/square.html^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator | square calc</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <h2>square calc</h2>
+    <div>
+        <form method="POST">
+            <div>
+                <label for="num">Number</label>
+                <input type="number" id="num" name="num"
+                    value="{{ num }}"/>
+            </div>
+            <div>
+                <label for="result">Square</label>
+                <input type="number" id="result" name="result"
+                    value="{{ square }}" readonly/>
+            </div>
+            <button type="submit">Calc Square</button>
+        </form>
+        <p>The square of {{ num }} is {{ square }}</p>
+    </div>
+</body>
+</html>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+$flask --app square.py run --host=0.0.0.0 --port=5000 --debug 
+
+open the browser 
+    "https://server/square"
+
+    we have the initial form: 
+
+usage:
+    give a number in the number box and hit "calc square" button
+    the form is submitted to server and response we will get in the similar form 
+    with square output in box and in the paragraph.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

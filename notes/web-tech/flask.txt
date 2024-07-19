@@ -1,0 +1,125 @@
+Web Development Frameworks | Web App / Web (REST) API App 
+    Python 
+        Django 
+        Flask 
+    Java 
+        Spring + Spring Boot 
+        Java EE 
+    C# .NET 
+        ASP.NET Web API | ASP.NET 
+    Javascript (Node)
+        Express 
+
+1. Web REST API App is also called backend app, server app, api provider app.
+   Web API app is also called service oriented app. 
+   end output: Not HTML 
+   end output: resource represented by JSON | XML | Plain Text 
+   for example, 
+   a. notes app in backend we may deal with resource called "notes" 
+   notes is of fields { id, title, notes }      <- table / collection 
+   backend app output: notes objects in JSON 
+   b. vendor search app, resource is "vendor"
+   vendor is of fields { id, name, place, type, ratings } <- table / collection 
+   backend app output: vendor(s) object(s) in JSON
+
+   create / read / update / delete resource 
+   c        r      u        d ie CRUD on resource 
+
+2. Web App is also called presentation oriented app. 
+   In web app dev. framework, template engine is included.
+   Here, response of the web app is web pages / server pages. 
+   end output : HTML
+
+Flask:
+    Web Development Framework of python 
+    - Web app 
+    - Web api app 
+
+nimbus: "our-first-hello"    
+Once we created the nimbus flask app. 
+To run the app: 
+^^^^^^^^^^^^^^^^^^^^command prompt / terminal^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    $ flask --app app.py run --host=0.0.0.0 --port=5000 --debug
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
+
+^^^^^^^^^^^^^^^^^^^^open in browser^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    https://jvxb1j-5000.ocws.app
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
+
+Now, our first flask application is running in the termial.
+we may see the output in the browser using above such url.
+
+^^^^^^^^^^^^^^^^app.py^^^^^^^^^^^^^^^^^^^^^^^^^
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello_world():
+    return "<p>Hello, World!</p>"
+
+@app.route("/dravid")
+def dravid_handler():
+    return "<h1>I am rahul dravid</h1>"
+
+@app.route("/greet")
+def gree_all():
+    return f'''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello App | Greet</title>
+</head>
+<body>    
+    <h1>Hello App</h1>
+    <h3>Greetings...</h3>
+    <p>Greeting to all!!!</p>
+</body>
+</html>'''
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+$ flask --app app.py run --host=0.0.0.0 --port=5000 --debug
+
+https://jvxb1j-5000.ocws.app
+    hit the browser to see the different outputs 
+https://jvxb1j-5000.ocws.app/
+https://jvxb1j-5000.ocws.app/greet
+https://jvxb1j-5000.ocws.app/dravid 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+nimbus - flask - help manual 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Python - Flask
+This is a simple Python - Flask application. This application serves as a basic template for a web server using python for the backend, flask as the web application framework.
+
+What does this application do?
+This application serves a simple web server that listens on defined port, default: 5000.
+
+How to run?
+You can run the application in one of the following ways:
+
+Press F5. This will start the application in debug mode.
+
+Open a terminal by going to 'View' -> 'Terminal'. Then, run following command:
+
+flask --app app.py run --host=0.0.0.0 --port=5000 --debug
+
+This will start the application in development mode.
+
+Via curl command:
+Open a terminal.
+Type the following command:
+curl http://localhost:5000
+
+Press 'Enter' to make the request.
+Via Thunder Client:
+Click on the Thunder Client icon on the activity bar on the side. If you can't find it, you can search for 'Thunder Client' in the 'View' -> 'Extensions' menu.
+Once Thunder Client is open, click on 'New Request'.
+In the 'Request URL' field, enter the URL of your application (e.g., http://localhost:5000) and select the HTTP method from the dropdown menu.
+Click on 'Send' to make the request.
+Visit Flask Quickstart for more information.
+
+Happy coding! 🙂
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
