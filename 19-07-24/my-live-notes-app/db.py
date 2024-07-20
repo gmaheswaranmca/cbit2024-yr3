@@ -53,6 +53,25 @@ def readAllNotes():
                 notes=row[2]))
     return notes 
 
+def search(title, notes_text):
+    title = title.strip()
+    notes_text = notes_text.strip()
+    sql = """SELECT id,title, notes FROM notes
+        WHERE ( ? == '' OR title=?) AND 
+              ( ? == '' OR notes like ('%' || ? || '%'))"""
+    params = (title,title, notes_text,notes_text)
+    con = connect()
+    cur = con.cursor()
+    response = cur.execute(sql,params)
+    result = response.fetchall() #[rows], each row=[id,title,...]
+    con.close()
+
+    notes = []
+    for row in result:
+        notes.append(Note(id=row[0],title=row[1],
+                notes=row[2]))
+    return notes 
+
 def updateNote(note):
     sql = """UPDATE notes
     set title=?,notes=?

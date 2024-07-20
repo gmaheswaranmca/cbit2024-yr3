@@ -1,0 +1,119 @@
+Yesterday Learnings:
+
+Routes Definition for notes-app:
+
+Planner:
+       route                menu            template      handler
+    1. /                    "search notes"  index.html    index()
+    2. /create              "new notes"     create.html   create_notes()
+    3. /list                "all notes"     list.html     list_notes()
+    4. /view/<id>           "view notes"    view.html     view_notes(id)
+    5. /edit/<id>           "edit notes"    edit.html     edit_notes(id)    
+
+Routes and Handlers:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+@app.route("/")
+def index():
+    return render_template('index.html')
+@app.route("/create")
+def create_notes():
+    return render_template('create.html')
+@app.route("/list", methods=["GET"]) #
+def list_notes():
+    notes = readAllNotes()#
+    return render_template('list.html', notes = notes)#
+@app.route("/view/<id>")
+def view_notes(id):
+    return render_template('view.html')
+@app.route("/edit/<id>")
+def edit_notes(id):
+    return render_template('edit.html')
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*********************************************Routes:*********************************************
+Example 1: 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+@app.route("/")
+def index():
+    return "<h1>Welcome To Dev...</h1>"
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Here, route is "/" ie root route from the server end point.
+The function "index" is handler and 
+response in the form of text and html is returned out of function.
+
+Example 2: 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+@app.route("/create")
+def create_notes():
+    return render_template('create.html')
+
+Here, 
+    route : "/create"
+    handler : function create_notes
+    response is bound to template (HTML) file named "create.html"
+
+    The template file may have data binding syntax like 
+        "display data" binding 
+        "iterator" binding 
+        "condition" binding 
+        extending the "master" or "base" page   
+            redefining the "block" defined in the "master" page. 
+
+Example 3: 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+@app.route("/create",methods=['GET','POST'])
+def create_notes():
+    note = Note()
+    if request.method == 'POST':
+        note.title = request.form['title']
+        note.notes = request.form['notes']
+        createNote(note)
+        #redirect to the list page 
+    elif request.method == 'GET':
+        return render_template('create.html')        
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Example 4: 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+@app.route("/create",methods=['GET'])
+def create_notes_form():
+    note = Note()
+    return render_template('create.html') 
+
+@app.route("/create",methods=['POST'])
+def create_notes_process():
+    note.title = request.form['title']
+    note.notes = request.form['notes']
+    createNote(note)
+    #redirect to the list page     
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*********************************************Templates(Data Bindings):*********************************************
+
+Data binding: 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    {{ data }}
+        {{ first }} 
+        {{ second }} 
+        {{ sum }} 
+        {{ num }} 
+        {{ square }}
+    {{ anyDictionary['value'] }}
+    {{ instance.attribute }}
+        {{ note.id }}
+        {{ note.title }}
+    {{ array[elementIndex] }}
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
+
+Iterator binding: 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    {% for note in notes %}
+        <tr> <td>{{ note.id }}</td> <td>{{ note.title }}</td> 
+            <td>
+                <a href="/view/{{ note.id }}" class="btn btn-success">view</a> 
+                <a href="/edit/{{ note.id }}" class="btn btn-warning">edit</a>
+                <button class="btn btn-danger">delete</button>
+            </td>
+        </tr>
+    {%  endfor  %}
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

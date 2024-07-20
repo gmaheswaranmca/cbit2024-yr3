@@ -1,0 +1,13 @@
+trainer:
+    id, name, skill, commercial, preferred_location
+
+    id = autoincrement 
+
+crud operations in trainer 
+    "search trainer", "all trainers", "new trainer"
+
+    list of trainers
+    #   name    skill   commercial Rs.    perferred location 
+    1                                                          <edit> <delete> 
+    2
+    3

@@ -1,0 +1,21 @@
+{% extends 'master/master-logged-in.html' %}
+{% block title %}New Notes{% endblock %}
+{% block main %}  
+<h3>New Notes</h3>
+<div class="container">
+  <form method='POST'>
+    <div class="mb-3 form-group">
+      <label for="title" class="form-label">title</label>
+      <input type="text" class="form-control" name="title"
+          id="title" placeholder="type here notes title....">
+    </div>
+    <div class="mb-3 form-group">
+        <label for="notes" class="form-label">notes</label>
+        <textarea class="form-control" name="notes"
+            id="notes" placeholder="type here notes...."></textarea>
+      </div>
+    <button type="submit"
+      class="btn btn-success">Create Notes</button>
+  </form>
+</div>
+{% endblock %} 
