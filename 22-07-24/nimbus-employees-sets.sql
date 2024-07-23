@@ -8,7 +8,20 @@ select * from departments;
 select * from leaves;
 select * from salaries;
 
+Host
+ocdb.app
 
+Port
+5051
+
+Database
+db_42kvcqwh9
+
+Username
+user_42kvcqwh9
+
+Password
+p42kvcqwh9
 /*
     columns selectors | expressions as columns | constants as columns 
         expression operators (selectors): + - * /  
