@@ -415,3 +415,65 @@ from employees as e
     INNER JOIN departments as d ON(e.department_id = d.department_id)
     INNER JOIN salaries as s ON (e.employee_id = s.employee_id)
 GROUP BY d.department_name
+
+
+-- selectors : column, expression - fn/ops, constant
+-- filtering : where cond - relational + in / between / like + logical 
+-- sorting : text, number 
+-- aggregators 
+-- group by and aggregators 
+-- join (inner join)
+-- queries from bytexl on nimbus platform 
+
+join types: cross join, 
+    1. inner join 
+    2. left outer join 
+    3. right outer join 
+    4. full outer join 
+
+insert into departments(department_id,department_name) values(106,'Account');
+
+-- display deprt name and emp name 
+select d.department_name, e.first_name 
+from employees e
+    inner join departments d on(e.department_id = d.department_id)
+
+-- count the joined dept and emp tables rows
+select count(*)
+from employees e
+    inner join departments d on(e.department_id = d.department_id)
+
+-- display dept name and emp name of the matched rows
+--      and excess departments as well 
+    -- example for left outer join |
+    -- left join OR left outer join 
+select d.department_name, ifnull(e.first_name,'No Data') first_name
+from departments d
+    left join employees e on(e.department_id = d.department_id)
+
+        -- OR 
+    -- example for right outer join |
+    -- right join OR right outer join 
+select d.department_name, ifnull(e.first_name,'No Data') first_name
+from employees e
+    right join departments d on(e.department_id = d.department_id)
+
+    -- if we have left table excess rows and right table excess rows 
+    table_left L 
+        full outer join table_right R ON (condition)
+    -- matched rows + left extra rows + right extra rows 
+
+--- not covered here: union, correlated sub query
+    union: 
+        display male employees whose salary is less than the avg male salary 
+            union 
+        display female employees whose salary is less than the avg female salary 
+    correlated sub query:
+        1. find department's max salary 
+        2. find department's 2nd max salary (solve via correlated sub query)
+    sub query: runs first and then main query will run 
+    correlated sub query: every row the sub query will run 
+
+-- stored procedure 
+-- stored function 
+    deterministic | non-deterministic

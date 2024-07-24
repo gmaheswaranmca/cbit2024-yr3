@@ -1,0 +1,75 @@
+notes app | vendor app 
+    - web app       | CRUD 
+    - full stack    
+        - backend       flask       - business logic 
+            | CRUD ops 'to code'
+        - frontend      react JS    - UI logic (SPA - Single Page Application)
+            angular, vue JS 
+            | CRUD ops 'to code'
+    o CRUD operations 
+    o authentiction and authorization 
+-- -- -- 
+HTML 5 / CSS 3 / Bootstrap / Javascript 
+Python Flask 
+SQL - RDBMS - 
+-- -- -- 
+full stack | micro service | cluster computing | devops | cloud computing 
+-- -- -- 
+full stack "notes app" 
+    backend "notes app" using flask 
+    frontend "notes app" using react 
+----------------------------------
+backend "notes app" using flask
+    - notes app - APIs End Point -- HTTP Based APIs - REST APIs  / Web Services 
+    output/input are resource | notes | vendor 
+        "JSON" / XML / Plain Text 
+
+    after HTML 5 / CSS 3, the REST APIs was introduced.
+
+    flask is one of the leading REST API development framework. 
+
+    HTTP Request methods : GET, POST, PUT, DELETE 
+
+    API End Point = Request Method + URL 
+                    verb           + noun 
+----------------------------------  
+
+from flask import Flask, jsonify, request
+# jsoinfy = convert python data into json, forms response object
+app = Flask(__name__)
+
+@app.route("/calc/sum/<a>/<b>",methods=["GET"])
+def calc_sum(a,b):
+    s = int(a) + int(b)
+    res = {'sum': s, 'a':a, 'b':b}    
+    return jsonify(res)
+
+Here, 
+    API End Point is     
+        GET https/<server>/calc/sum/<a>/<b>
+    To handle API End Point request, 
+        we have the handler function: 
+            calc_sum  
+
+@app.route("/calc/square",methods=["POST"])
+def calc_square():
+    body = request.get_json()
+    num = int(body['num'])
+    square = num ** 2
+    res = {'square': square, 'num':num}    
+    return jsonify(res)
+----------------------------------
+notes backend app : API End Points 
+       Task           verb              Noun                            handler 
+                      Request Method    URL
+                                        baseUrl: https://<server> 
+    1. create         POST              /notes                          notes_create()
+    2. read by id     GET               /notes/<id>                     notes_read_by_id(id)            
+    3. read all       GET               /notes                          notes_read_all() 
+    4. update         PUT               /notes/<id>                     notes_update(id) 
+    5. delete         DELETE            /notes/<id>                     notes_delete(id) 
+    6. search         POST              /notes_search                   notes_search() 
+
+
+
+
