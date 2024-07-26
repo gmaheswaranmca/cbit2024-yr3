@@ -1,0 +1,234 @@
+React JS:
+    node JS based package and framework for UI web based frontend.
+
+    -- focus not on business logic 
+    -- focus only on UI logic 
+
+    SPA - Single Page Application (past)
+        -- router - URL switch - location API + history API 
+        -- to switch they use js 
+        -- for business logic / data logic we connect via ajax 
+        -- templates engine like mustache etc to bind the data and HTML template 
+
+    REST APIs - HTTP based web services 
+        JavaScript - Express JS 
+        Python     - Flask / Django
+        Java       - Spring+Boot / Java EE 
+        C#         - ASP.NET Web API  
+    
+        --- specialized ajax based APIs client ---
+    HTML 5 - fetch API - to handle REST APIs 
+           - 3rd party API client - axios 
+
+    Introduction of frontend frameworks ( only UI logic )
+        Angular JS / Angular 2+
+        React JS 
+        Vue JS 
+
+        approach : develop at server side, here server is node JS based server 
+                   run at client side, here client is the browser 
+
+React JS:
+    front end framework 
+    -- UI logic 
+
+    web page is parsed in the browser as document 
+    each element is the object within document 
+
+    Document Object Model (DOM): hierarchical objects map for the web document elements tree 
+
+    React JS will close work with DOM. manipulating on real DOM.
+
+    React JS has its virtual DOM and sees is there changes between real DOM and virtual DOM 
+    If "virtual DOM" has the changes, will be updated to the "real DOM".
+
+    "Context API"
+
+React JS:
+    building block : component 
+
+    component - UIs - portion of the HTML 
+
+    it will work on component(s) in hierarchical also.
+
+    component tree we will have in react.
+
+    to work within component or to communicate across components,
+    we have the concepts / facilities in React JS.
+
+    "React JS component"
+        functional / class component 
+                + 
+        UI / HTML -> XML
+
+        JSX = JavaScript + XML (HTML 5)
+React JS: 
+    node JS based development 
+    
+    node JS + npm - combo installation 
+        node 
+        npm 
+        npx 
+
+-- to query node version 
+$node -v 
+-- to query npm version 
+$npm -v 
+-- to query npx version 
+$npx -v 
+
+
+node modules are the packages of the node JS.
+
+node_modules is the folder where we will have all the packages installed.
+
+to maintain the node packages, we have CLI npm.
+npm - node package manager like pip in python 
+
+-- package.json -- every node project will have it 
+package.json will have the "packages" installed in dependecies section 
+and scripts for development and ect 
+
+In react JS project structure, we have 
+1. index.html - single page where we have all our react components in hierarchy or in routes 
+    has the 'div' tag with 'id' "root"
+2. main.jsx - entry for react js application 
+    - holds App component 
+    here App component (UIs) is mounted in the 'div' of "id" 'root'
+3. App.jsx 
+    - main component where we will further childs tree components 
+    -- component = function/class + HTML 
+4. React framework will listen the application 
+    the changes in the virtual DOM will be listened carefully 
+    and if it is to be updated to the real dom, then do changes in real DOM 
+5. In react, we have two terms props / states 
+    what is prop?
+        prop is data from parent 
+    what is state?
+        state is data needed for component state 
+
+    the props and state are closely handled by the react framework. 
+
+
+
+-- --- --
+to create the react project setup locally:
+    $ npx create-react-app cbit-apps
+    Here, cbit-apps is name of the app. 
+    Once we run this cmd, the project structure will be created 
+    and required packages will be installed.
+
+to create vite based react project setup:
+    $ npm create vite@latest my-react-app -- --template react
+    we have, the vite based project setup.
+
+-- --- --
+counter case study:
+    1. have the initial setup 
+    2. create Counter component 
+        on click of button we need the counter 
+
+        CounterExample  [count: 5]
+
+        CounterStandard  
+                         5   
+                        + -
+        CounterExtended   
+                            5
+                        + offset -   
+
+
+const [count, setCount] = useState(0);
+
+Here, useState is hook from framework to maintain state for functional component.
+useState takes argument which is initial value for the state.
+Our state is the count data, so the data type is integer.
+
+Here, our case the data initialzed with 0.
+
+***useState***
+    -- takes argument, which is initialization of data 
+        data may be primitive data or json / object or array 
+    -- returns 
+        two element array 
+            first element is the read-only 'value of the state' 
+            second element is the function 'to set the state'
+
+--------------------------------------------------
+To App 
+    childs 
+    
+    - Create 
+        raises / probagate add event to the parent 
+    - List 
+        receives list from parent as props 
+        raises delete event to the parent 
+--------------------------------------------------        
+() => onTodoDelete(index)}
+
+similar to 
+function() {
+    onTodoDelete(index)
+}
+--------------------------------------------------
+-- ToDoApp.jsx 
+import { useState } from "react";
+import ToDoCreate from "./ToDoCreate";
+import ToDoList from "./ToDoList";
+function ToDoApp () {
+    const [todos, setTodos] = useState(['item 1', 'item 2'])
+    const onTodoDelete = function(index) {
+        let newTodos = [];
+        for(let I = 0; I < todos.length; I++){
+            if(I !== index){
+                newTodos.push(todos[I])
+            }
+        }
+        setTodos(newTodos);
+    }
+    return (
+        <>
+            <h3>ToDo App</h3> <ToDoCreate/>  
+            <ToDoList todos={todos} 
+                onTodoDelete={onTodoDelete}/>
+        </>
+    );
+}
+export default ToDoApp;
+
+-- ToDoList.jsx
+function ToDoList ( { todos, onTodoDelete } ) {   
+    return (
+        <>
+           <table>
+                <tr> <th>#</th> <th>todo item</th> <th></th> </tr>
+                {
+                    todos.map(function(todo,index) {
+                        return (
+                            <tr key={index}> <td>{index+1}</td> 
+                                <td>{todo}</td> 
+                                <td>
+                                    <button 
+                                    onClick={() => onTodoDelete(index)}>
+                                        Delete</button>
+                                </td> </tr>
+                        )
+                    })
+                }
+            </table>
+        </>
+    );
+}
+export default ToDoList; 
+--------------------------------------------------
+
+To create react app locally:
+way 1:
+$ npx create-react-app project-name
+
+way 2:
+$ npm create vite@latest project-name -- --template react 
+
+The way 2 ie using 'vite' is my recommendation.
+
+--------------------------------------------------

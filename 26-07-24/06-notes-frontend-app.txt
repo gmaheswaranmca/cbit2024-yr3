@@ -1,0 +1,30 @@
+                                            Route Path 
+
+-- index.html
+-- /src/main.jsx 
+-- /src/App.jsx 
+-- /src/header/LoggedInHeader.jsx
+-- /src/notes/SearchNotes.jsx                   "/"
+-- /src/notes/ListNotes.jsx                     "/notes/list"
+-- /src/notes/CreateNote.jsx                    "/notes/create"
+-- /src/notes/ViewNote.jsx                      "notes/view/:id"
+-- /src/notes/EditNote.jsx                      "notes/edit/:id"
+
+-- /src/services/BackendService.js
+
+-- /src/header/LogInHeader.jsx
+-- /src/login/Login.jsx                         "/login"
+-- /src/services/LoginService.js
+--------------------------------------------------------------------------------
+1. Create the project and install "react-router-dom" using npm:
+    $npm install react-router-dom 
+2. Initial Setup of our application development
+    "06-notes-frontend-app-initial.txt"
+3. Do designs of the pages using Bootstrap 
+    -- as we done early the designs in html, we do copy here.
+    "06-notes-frontend-app-design.txt"
+--------------------------------------------------------------------------------
+{JSON.stringify(formNote)} is used in ui to print the document 
+for tracing/debugging   
+
+

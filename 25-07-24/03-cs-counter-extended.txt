@@ -1,0 +1,79 @@
+----- index.html 
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBIT Year3 Apps</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+----- /src/main.jsx 
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+//import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
+
+----- /src/App.jsx 
+//import { useState } from 'react'
+//import reactLogo from './assets/react.svg'
+//import viteLogo from '/vite.svg'
+//import './App.css'
+
+import CounterExtended from "./counter/CounterExtended"
+
+
+function App() { 
+  return (
+    <>
+      <h1>CBIT Year 3 Apps</h1>     
+      <CounterExtended/>  
+    </>
+  )
+}
+export default App
+
+
+
+----- /src/counter/CounterExtended.jsx 
+import { useState } from "react";
+
+function CounterExtended () {
+    const [count,setCount] = useState(0);
+    const [offset, setOffset] = useState(1); //1 .. 10
+    const onPlus = function() {
+        setCount(count + offset);
+    } 
+    const onMinus = function() {
+        if((count - offset) <= 0) { return; }
+        setCount(count - offset);
+    } 
+    //const onOffsetChange = (event) => {
+    const onOffsetChange = function(event) {
+        setOffset(parseInt(event.target.value))
+    }
+    return (
+        <>
+            <h3>Counter Extended:{count}</h3>
+            <button onClick={onPlus}>+</button>
+            <input type="number" min="1" max="10"
+                value={offset} onChange={onOffsetChange}/>
+            <button onClick={onMinus}>-</button>
+        </>
+    )
+}
+export default CounterExtended;
+
+
+
