@@ -1,0 +1,230 @@
+-- /src/notes/SearchNotes.jsx                   "/"
+import { useState } from "react";
+import LoggedInHeader from "../header/LoggedInHeader";
+import backendService from "../services/BackendService";
+export default function SearchNotes() {
+    const [formNote, setFormNote] = useState({title:'',notes:''});
+    const [notesList, setNotesList] = useState([
+        /* {id:10, title:'HTML 5', notes: 'HTML5 is a web designing language.'},
+        {id:20, title:'Python', notes: 'Python is a high level language.'} */
+    ])
+    const onBoxChange = (event) => {
+        const newForm = {...formNote};
+        newForm[event.target.id]=event.target.value;
+        setFormNote(newForm);
+    }
+    const onSearch = async () => {
+        const searchNote = {title:formNote.title,
+            notes_text: formNote.notes}
+        const response = await backendService.search(searchNote);
+        const searchedNotes = response.data;
+        setNotesList(searchedNotes);
+    }
+    return(<><LoggedInHeader activeMenuPath={'/'}/>
+     <h3>Search Notes</h3>
+  <div className="container">
+    <div className="mb-3 form-group">
+      <label htmlFor="title" className="form-label">title</label>
+      <input type="text" className="form-control" 
+          id="title" placeholder="type here notes title...."
+          value={formNote.title} onChange={onBoxChange}/>
+    </div>
+    <div className="mb-3 form-group">
+        <label htmlFor="notes" className="form-label">notes text</label>
+        <textarea className="form-control" 
+            id="notes" placeholder="type here notes text...."
+            value={formNote.notes} onChange={onBoxChange}></textarea>
+      </div>
+    <button className="btn btn-success"
+        onClick={onSearch}>Search</button>
+
+    <table className="table">
+<thead> <tr> <th>#</th> <th>title</th> <th></th></tr> </thead>
+<tbody> {notesList.map( (note, index) => 
+    (<tr key={index}> <th>{index+1}</th> <th>{note.title}</th> 
+        <th>
+            <a href={"/notes/view/" + note.id} 
+                className="btn btn-success">view</a> 
+            <a href={"/notes/edit/" + note.id} 
+                className="btn btn-warning">edit</a>
+            <button className="btn btn-danger">delete</button>
+        </th>
+    </tr>)    
+    )}</tbody>
+</table> 
+</div>
+    </>)
+}
+-- /src/notes/ListNotes.jsx                     "/notes/list"
+import { useEffect, useState } from "react";
+import LoggedInHeader from "../header/LoggedInHeader";
+import backendService from "../services/BackendService";
+export default function ListNotes() {
+    const [notesList, setNotesList] = useState([
+        /* {id:10, title:'HTML 5', notes: 'HTML5 is a web designing language.'},
+        {id:20, title:'Python', notes: 'Python is a high level language.'} */
+    ])
+    const doReadAll = async () => {
+        const response = await backendService.readAll();
+        const json = response.data;
+        setNotesList(json);
+    }
+    useEffect(()=>{doReadAll();},[]);
+    const onDelete = async (id) => {
+        if(!confirm("Are you sure to delete?")) return;
+        const response = await backendService.delete(id);
+        const deletedMessage = response.data; 
+        alert(deletedMessage.message)        
+        await doReadAll();
+    }
+    return(<><LoggedInHeader activeMenuPath={'/notes/list'}/>
+    <h3>List of Notes</h3>
+  <div className="container">
+<table className="table">
+<thead> <tr> <th>#</th> <th>title</th> <th></th></tr> </thead>
+<tbody> {notesList.map( (note, index) => 
+    (<tr key={index}> <th>{index+1}</th> <th>{note.title}</th> 
+        <th>
+            <a href={"/notes/view/" + note.id} 
+                className="btn btn-success">view</a> 
+            <a href={"/notes/edit/" + note.id} 
+                className="btn btn-warning">edit</a>
+            <button className="btn btn-danger" onClick={() => onDelete(note.id)}>delete</button>
+        </th>
+    </tr>)    
+    )}</tbody>
+</table>  
+  </div>
+    </>)
+}
+-- /src/notes/CreateNote.jsx                    "/notes/create"
+import { useState } from "react";
+import LoggedInHeader from "../header/LoggedInHeader";
+import backendService from "../services/BackendService";
+import { useNavigate } from "react-router-dom";
+export default function CreateNote() {
+    const [formNote, setFormNote] = useState({title:'',notes:''});
+    const navigate = useNavigate();
+    const onBoxChange = (event) => {
+        const newForm = {...formNote};
+        newForm[event.target.id]=event.target.value;
+        setFormNote(newForm);
+    }
+    const onCreate = async () => {
+        const newNote = {title:formNote.title,
+            notes: formNote.notes}
+        const response = await backendService.create(newNote);
+        const createdNote = response.data;
+        console.log(createdNote) //debug purpose 
+        alert('Note created successfully.');
+        navigate("/notes/list");
+    }
+    return(<> <LoggedInHeader activeMenuPath={'/notes/create'}/> <h3>New Notes</h3> 
+  <div className="container">
+    <div className="mb-3 form-group">
+      <label htmlFor="title" className="form-label">title</label>
+      <input type="text" className="form-control" 
+          id="title" placeholder="type here notes title...."
+          value={formNote.title} onChange={onBoxChange}/>
+    </div>
+    <div className="mb-3 form-group">
+        <label htmlFor="notes" className="form-label">notes</label>
+        <textarea className="form-control" 
+            id="notes" placeholder="type here notes...."
+            value={formNote.notes} onChange={onBoxChange}></textarea>
+      </div>
+    <button className="btn btn-success" 
+        onClick={onCreate}>Create Notes</button>
+</div>
+    
+    </>)
+}
+-- /src/notes/ViewNote.jsx                      "notes/view/:id"
+import { useEffect, useState } from "react";
+import LoggedInHeader from "../header/LoggedInHeader";
+import { useParams } from "react-router-dom";
+import backendService from "../services/BackendService";
+export default function ViewNote() {
+    const [formNote, setFormNote] = useState({title:'',notes:''});
+    const params = useParams();
+    const onBoxChange = (event) => {
+        const newForm = {...formNote};
+        newForm[event.target.id]=event.target.value;
+        setFormNote(newForm);
+    }
+    const doReadById = async () => {
+        const response = await backendService.readById(params.id);
+        const queriedNote = response.data;
+        setFormNote(queriedNote);
+    }
+    useEffect(()=>{doReadById();},[])
+    return(<><LoggedInHeader activeMenuPath={'/notes/list'}/>
+    <a href="list.html" className="btn btn-light">Go Back</a> 
+  <h3>View Notes</h3>
+  <div className="container">
+    <div className="mb-3 form-group">
+      <label htmlFor="title" className="form-label">title</label>
+      <input type="text" className="form-control" 
+          id="title" placeholder="type here notes title...."
+          readonly="true"
+          value={formNote.title} onChange={onBoxChange}/>
+    </div>
+    <div className="mb-3 form-group">
+        <label htmlFor="notes" className="form-label">notes</label>
+        <textarea className="form-control" 
+            id="notes" placeholder="type here notes...." 
+            readonly="true" 
+            value={formNote.notes} onChange={onBoxChange}></textarea>
+      </div>
+</div>
+    </>)
+}
+-- /src/notes/EditNote.jsx                      "notes/edit/:id"
+import {  useEffect, useState } from "react";
+import LoggedInHeader from "../header/LoggedInHeader";
+import { useParams, useNavigate } from "react-router-dom";
+import backendService from "../services/BackendService";
+export default function EditNote() {
+    const [formNote, setFormNote] = useState({title:'',notes:''});
+    const params = useParams();
+    const navigate = useNavigate();
+    const onBoxChange = (event) => {
+        const newForm = {...formNote};
+        newForm[event.target.id]=event.target.value;
+        setFormNote(newForm);
+    }
+    const doReadById = async () => {
+        const response = await backendService.readById(params.id);
+        const queriedNote = response.data;
+        setFormNote(queriedNote);
+    }
+    const onUpdate = async () => {
+        const newNote = {title:formNote.title,
+            notes: formNote.notes}
+        const response = await backendService.update(params.id,newNote);
+        const updatedNote = response.data;
+        console.log(updatedNote) //debug purpose 
+        alert('Note updated successfully.');
+        navigate("/notes/list");
+    }
+    useEffect(()=>{doReadById();},[])
+    return(<><LoggedInHeader activeMenuPath={'/notes/list'}/>
+    <h3>Edit Notes</h3>
+  <div className="container">
+    <div className="mb-3 form-group">
+      <label htmlFor="title" className="form-label">title</label>
+      <input type="text" className="form-control" 
+          id="title" placeholder="type here notes title...."
+          value={formNote.title} onChange={onBoxChange}/>
+    </div>
+    <div className="mb-3 form-group">
+        <label htmlFor="notes" className="form-label">notes</label>
+        <textarea className="form-control" 
+            id="notes" placeholder="type here notes...."
+            value={formNote.notes} onChange={onBoxChange}></textarea>
+      </div>
+    <button className="btn btn-danger"
+        onClick={onUpdate}>Update Notes</button>
+</div>
+    </>)
+}

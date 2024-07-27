@@ -26,5 +26,60 @@
 --------------------------------------------------------------------------------
 {JSON.stringify(formNote)} is used in ui to print the document 
 for tracing/debugging   
+--------------------------------------------------------------------------------
+Backend Calls (API Consumer): API client libraries
+    - fetch API : Its part of HTML 5 (core)
+    - axios : node package 
+--------------------------------------------------------------------------------
+BackendService.js will use the axios for backend calls:
+    to install axios:
+    $ npm install axios
+--------------------------------------------------------------------------------
+js promise : functional state based object - to make the asychrous call 
+    - pending 
+    - fulfilled - completed  
+    - rejected - rejected 
 
+once we have the promise object the state is pending. 
+
+to invoke the function: 
+    attach the "then" and "catch" functions
+
+    "then" takes argument function which will be handler for "fulfilled" state 
+    "catch" takes argument function which will be handler for "rejected" state 
+
+way 1: as asynchronous way 
+function f(){
+    service.list().
+        .then( (response) => {/*response hanlder*/})
+        .catch ( (error) => { /*error handler*/})
+}
+
+way 2: try as synchronous way   !!!Most practiced approach / less error prone 
+using "async/await" combo 
+    a. make surrounding / scoped fn as async 
+    b. then use await to block the call 
+async function f(){
+    try {
+    const response = await service.list();
+    } catch(error){
+        //handle the error 
+    } 
+}
+
+--------------------------------------------------------------------------------
+react component life cycle:
+1. component after mounted 
+    : to register/subscribe third party library 
+    : side effect calls like "backend calls" etc 
+2. component after re-rendered
+    : for every time the data changed 
+3. component before unmounted 
+    : to unsubscribe third party library 
+--------------------------------------------------------------------------------
+backend app restricted the frontend app to make the backend call. 
+Reason: CORS issue - cross site request to be enabled in backend app 
+for flask install Flask-Cors package. 
+$ pip install Flask-Cors 
+name inside the python is "flask_cors"
 
