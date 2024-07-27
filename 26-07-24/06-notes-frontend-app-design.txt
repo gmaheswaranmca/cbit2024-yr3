@@ -95,7 +95,34 @@ export default function LoggedInHeader( { activeMenuPath } ) {
     )
 }
 -- /src/notes/SearchNotes.jsx                   "/"
-
+import { useState } from "react";
+import LoggedInHeader from "../header/LoggedInHeader";
+export default function SearchNotes() {
+    const [formNote, setFormNote] = useState({title:'',notes:''});
+    const onBoxChange = (event) => {
+        const newForm = {...formNote};
+        newForm[event.target.id]=event.target.value;
+        setFormNote(newForm);
+    }
+    return(<><LoggedInHeader activeMenuPath={'/'}/>
+     <h3>Search Notes</h3>
+  <div className="container">
+    <div className="mb-3 form-group">
+      <label htmlFor="title" className="form-label">title</label>
+      <input type="text" className="form-control" 
+          id="title" placeholder="type here notes title...."
+          value={formNote.title} onChange={onBoxChange}/>
+    </div>
+    <div className="mb-3 form-group">
+        <label htmlFor="notes" className="form-label">notes text</label>
+        <textarea className="form-control" 
+            id="notes" placeholder="type here notes text...."
+            value={formNote.notes} onChange={onBoxChange}></textarea>
+      </div>
+    <button className="btn btn-success">Search</button>
+</div>
+    </>)
+}
 -- /src/notes/ListNotes.jsx                     "/notes/list"
 import { useState } from "react";
 import LoggedInHeader from "../header/LoggedInHeader";
@@ -137,13 +164,13 @@ export default function CreateNote() {
     return(<> <LoggedInHeader activeMenuPath={'/notes/create'}/> <h3>New Notes</h3> 
   <div className="container">
     <div className="mb-3 form-group">
-      <label for="title" className="form-label">title</label>
+      <label htmlFor="title" className="form-label">title</label>
       <input type="text" className="form-control" 
           id="title" placeholder="type here notes title...."
           value={formNote.title} onChange={onBoxChange}/>
     </div>
     <div className="mb-3 form-group">
-        <label for="notes" className="form-label">notes</label>
+        <label htmlFor="notes" className="form-label">notes</label>
         <textarea className="form-control" 
             id="notes" placeholder="type here notes...."
             value={formNote.notes} onChange={onBoxChange}></textarea>
@@ -153,6 +180,64 @@ export default function CreateNote() {
     
     </>)
 }
--- /src/notes/ViewNote.jsx                      "notes/view/:id"
 
+-- /src/notes/ViewNote.jsx                      "notes/view/:id"
+import { useState } from "react";
+import LoggedInHeader from "../header/LoggedInHeader";
+export default function ViewNote() {
+    const [formNote, setFormNote] = useState({title:'',notes:''});
+    const onBoxChange = (event) => {
+        const newForm = {...formNote};
+        newForm[event.target.id]=event.target.value;
+        setFormNote(newForm);
+    }
+    return(<><LoggedInHeader activeMenuPath={'/notes/list'}/>
+    <a href="list.html" className="btn btn-light">Go Back</a> 
+  <h3>View Notes</h3>
+  <div className="container">
+    <div className="mb-3 form-group">
+      <label htmlFor="title" className="form-label">title</label>
+      <input type="text" className="form-control" 
+          id="title" placeholder="type here notes title...."
+          readonly="true"
+          value={formNote.title} onChange={onBoxChange}/>
+    </div>
+    <div className="mb-3 form-group">
+        <label htmlFor="notes" className="form-label">notes</label>
+        <textarea className="form-control" 
+            id="notes" placeholder="type here notes...." 
+            readonly="true" 
+            value={formNote.notes} onChange={onBoxChange}></textarea>
+      </div>
+</div>
+    </>)
+}
 -- /src/notes/EditNote.jsx                      "notes/edit/:id"
+import { useState } from "react";
+import LoggedInHeader from "../header/LoggedInHeader";
+export default function EditNote() {
+    const [formNote, setFormNote] = useState({title:'',notes:''});
+    const onBoxChange = (event) => {
+        const newForm = {...formNote};
+        newForm[event.target.id]=event.target.value;
+        setFormNote(newForm);
+    }
+    return(<><LoggedInHeader activeMenuPath={'/notes/list'}/>
+    <h3>Edit Notes</h3>
+  <div className="container">
+    <div className="mb-3 form-group">
+      <label htmlFor="title" className="form-label">title</label>
+      <input type="text" className="form-control" 
+          id="title" placeholder="type here notes title...."
+          value={formNote.title} onChange={onBoxChange}/>
+    </div>
+    <div className="mb-3 form-group">
+        <label htmlFor="notes" className="form-label">notes</label>
+        <textarea className="form-control" 
+            id="notes" placeholder="type here notes...."
+            value={formNote.notes} onChange={onBoxChange}></textarea>
+      </div>
+    <button className="btn btn-danger">Update Notes</button>
+</div>
+    </>)
+}
